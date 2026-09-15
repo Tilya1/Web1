@@ -1,0 +1,99 @@
+h2 {
+  color: green
+}
+
+p {
+  color: orange
+}
+
+.highlight {
+  color: rgb(0, 100, 0);
+  font-weight: bold;
+}
+
+#main-title {
+    color: rgb(0, 0, 100);
+    font-weight: bold;
+}
+
+.header {
+    background-color: rgb(230, 230, 230);
+    padding: 20px;
+    width: 500px;
+}
+
+.main-content {
+    border: 2px solid black;
+    margin: 2px;
+    padding: 20px;
+}
+
+.position-container {
+    position: relative;
+    min-height: 600px;
+}
+
+.static-box {
+    position: static;
+    border: 2px solid black;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.relative-box {
+    position: relative;
+    top: 10px;
+    border: 2px solid blue;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.absolute-box {
+    position: absolute;
+    top: 400px;
+    left: 0;
+    border: 2px solid green;
+    padding: 20px;
+    width: 700px;
+}
+
+.sizing-example {
+    font-size: 16px;
+}
+
+.sizing-example h1 {
+    font-size: 40px;
+}
+
+.sizing-example h2 {
+    font-size: 2em;
+}
+
+.sizing-example img {
+    width: 50%;
+    height: 200px;
+    width: 200px
+}
+
+.float-container {
+    border: 2px solid black;
+    padding: 20px;
+}
+
+.left-box {
+    float: left;
+    width: 150px;
+    height: 100px;
+    border: 2px solid rgb(137, 4, 4);
+}
+
+.right-box {
+    float: right;
+    width: 150px;
+    height: 100px;
+    border: 2px solid rgb(16, 16, 99);
+}
+
+.clear-text {
+    clear: both;
+}
