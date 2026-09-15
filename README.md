@@ -1,121 +1,121 @@
 # Assignment #1 — HTML & CSS Basics
 
-**Студент:** Zhumagaliyev Aktilek
-**Группа:** IT-2503
-**Университет:** AITU (Astana IT University)
-**Дисциплина:** Web 1
+**Student:** Zhumagaliyev Aktilek
+**Group:** IT-2503
+**University:** AITU (Astana IT University)
+**Course:** Web 1
 
-## Цель работы
+## Objective
 
-Целью данной работы было изучить основы HTML и CSS: создать простую веб-страницу с использованием базовых и промежуточных тегов HTML (текст, списки, изображения, ссылки, таблицы, формы), а также применить стили CSS (inline, internal, external), селекторы (элементы, классы, id), блочную модель, позиционирование, единицы измерения размера и обтекание (float/clear).
+The goal of this assignment was to learn the basics of HTML and CSS: build a simple webpage using basic and intermediate HTML tags (text, lists, images, links, tables, forms), and apply CSS (inline, internal, external), selectors (element, class, id), the box model, positioning, sizing units, and float/clear.
 
-## Структура проекта
+## Project Structure
 
 ```
-├── Untitled-1.html   # главная страница проекта (разметка HTML)
-├── styles.css        # внешний файл стилей (external CSS)
-├── images/           # изображения, используемые на странице (фото, favicon)
-└── screenshots/       # скриншоты выполненных заданий
+├── Untitled-1.html   # main page of the project (HTML markup)
+├── styles.css        # external stylesheet (external CSS)
+├── images/           # images used on the page (photo, favicon)
+└── screenshots/       # screenshots of completed tasks
 ```
 
-Страница подключает `styles.css` через `<link rel="stylesheet">`, а также содержит внутренние стили (`<style>` в `<head>`) и inline-стили (`style="..."` на отдельных элементах) — согласно заданию.
+The page links `styles.css` via `<link rel="stylesheet">`, and also contains internal styles (`<style>` in `<head>`) and inline styles (`style="..."` on individual elements), as required by the assignment.
 
 ## Part 1. Introduction to HTML
 
-**Шаг 0. Базовая структура HTML**
-Создан HTML-файл с базовым шаблоном (`<!DOCTYPE html>`, `<html>`, `<head>`, `<title>`, `<body>`), заголовок страницы — "My first webpage".
+**Step 0. Basic HTML structure**
+Created an HTML file with the basic boilerplate (`<!DOCTYPE html>`, `<html>`, `<head>`, `<title>`, `<body>`); the page title is "My first webpage".
 
-**Шаг 1. Структурирование текста**
-Добавлены заголовки `<h1>`–`<h3>` с именем, группой и разделом "About me", а также короткий абзац `<p>` с описанием себя.
+**Step 1. Structuring text**
+Added headings `<h1>`–`<h3>` with name, group, and an "About me" section, plus a short paragraph `<p>` describing myself.
 
-**Шаг 2. Списки**
-Добавлен нумерованный список `<ol>` с хобби и маркированный список `<ul>` с любимыми сайтами.
+**Step 2. Lists**
+Added an ordered list `<ol>` of hobbies and an unordered list `<ul>` of favorite websites.
 
-**Шаг 3. Изображения и ссылки**
-Добавлена фотография через `<img>` и минимум две кликабельные ссылки `<a>` (GitHub, MDN Web Docs, ChatGPT).
+**Step 3. Images and links**
+Added a photo via `<img>` and at least two clickable links `<a>` (GitHub, MDN Web Docs, ChatGPT).
 
-**Шаг 4. Кнопка**
-Добавлена кнопка "Click me!" (без функциональности).
+**Step 4. Button**
+Added a "Click me!" button (no functionality required).
 
-![Часть 1 — Заголовок, фото, about me](screenshots/part1_header.png)
+![Part 1 — Heading, photo, about me](screenshots/part1_header.png)
 
-![Часть 1 — Хобби](screenshots/part1_hobbies.png)
+![Part 1 — Hobbies](screenshots/part1_hobbies.png)
 
-![Часть 1 — Ссылки и кнопка](screenshots/part1_links_button.png)
+![Part 1 — Links and button](screenshots/part1_links_button.png)
 
 ## Part 2. Intermediate HTML
 
-**Шаг 5. Таблицы**
-Создана таблица с тремя колонками — "Subject", "Day", "Time" — с расписанием занятий.
+**Step 5. Tables**
+Created a table with three columns — "Subject", "Day", "Time" — filled with a weekly class schedule.
 
-**Шаг 6. Таблица для разметки (доп. задание)**
-Реализован двухколоночный макет через таблицу: левая колонка — меню, правая — основной контент.
+**Step 6. Table for layout (optional challenge)**
+Implemented a two-column layout using a table: left column — menu, right column — main content.
 
-**Шаг 7. Эмодзи**
-Добавлен абзац с настроением, содержащий минимум 3 эмодзи (😊, 💪, 🚀).
+**Step 7. Emojis**
+Added a paragraph about my mood containing at least 3 emojis (😊, 💪, 🚀).
 
-![Часть 2 — Таблицы и позиционирование](screenshots/part2_tables_positioning.png)
+![Part 2 — Tables and positioning](screenshots/part2_tables_positioning.png)
 
-**Шаг 8. Формы**
-Создана форма с полями Name (text), Email (email), Favorite Color (color) и кнопкой Submit.
+**Step 8. Forms**
+Created a form with Name (text), Email (email), Favorite Color (color) fields and a Submit button.
 
-![Часть 2 — Форма](screenshots/part2_form.png)
+![Part 2 — Form](screenshots/part2_form.png)
 
 ## Part 3. Introduction to CSS
 
-**Шаг 9–10. Inline CSS**
-Цвет абзаца "About me" изменён напрямую через `style="color:blue;"`.
+**Step 9–10. Inline CSS**
+Changed the color of the "About me" paragraph directly with `style="color:blue;"`.
 
-**Шаг 11. Internal CSS**
-В `<head>` внутри тега `<style>` задано правило для `h1` (фиолетовый цвет).
+**Step 11. Internal CSS**
+Inside `<head>`, used a `<style>` tag to set a rule for `h1` (purple color).
 
-**Шаг 12. External CSS**
-Создан файл `styles.css`, подключённый через `<link rel="stylesheet" href="styles.css">`. В нём вынесены основные правила стилей (цвета `h2`, `p`, оформление блоков и т. д.).
+**Step 12. External CSS**
+Created a `styles.css` file, linked with `<link rel="stylesheet" href="styles.css">`. Core style rules (colors for `h2`, `p`, block styling, etc.) were moved into it.
 
-**Шаг 13. Селекторы CSS**
-Использованы селектор по элементу (`p {}`, `h2 {}`), по классу (`.highlight {}`) и по id (`#main-title {}`) с разными цветами и шрифтами.
+**Step 13. CSS selectors**
+Used element selectors (`p {}`, `h2 {}`), a class selector (`.highlight {}`), and an id selector (`#main-title {}`) with different colors and fonts.
 
-**Шаг 14. Классы и ID**
-Создан класс `.highlight` для выделения ячейки таблицы (предмет "Web 1") и id `#main-title` для стилизации подзаголовка.
+**Step 14. Classes vs. IDs**
+Created a `.highlight` class to style the schedule row for "Web 1", and an `#main-title` id to style the subheading.
 
-*(Результат применения этих стилей виден на скриншотах выше — фиолетовый `h1`, синий и оранжевый текст абзацев, зелёный `h2`, выделенная строка таблицы "Web 1" и синий подзаголовок с именем группы.)*
+*(The result of these styles can be seen in the screenshots above — the purple `h1`, the blue and orange paragraph text, the green `h2`, the highlighted "Web 1" table row, and the blue group-name subheading.)*
 
 ## Part 4. Intermediate CSS
 
-**Шаг 15. Favicon**
-Добавлена иконка сайта через `<link rel="icon" type="image/png" href="logo-app.png">`.
+**Step 15. Favicon**
+Added a site icon via `<link rel="icon" type="image/png" href="logo-app.png">`.
 
-**Шаг 16. Div-блоки**
-Контент сгруппирован с помощью `<div>` на смысловые секции (`header`, `main-content`), оформленные фоном и отступами.
+**Step 16. HTML divs**
+Grouped content into sections using `<div>` (`header`, `main-content`), styled with background colors and padding.
 
-**Шаг 17. Box Model**
-Ко многим блокам добавлены `border`, `margin` и `padding` с разными значениями для проверки эффекта отступов.
+**Step 17. Box model**
+Added `border`, `margin`, and `padding` to several elements with different values to see the spacing effects.
 
-**Шаг 18. Позиционирование CSS**
-Реализованы три блока с разными типами позиционирования: `static` (таблица расписания), `relative` (таблица меню/контента, смещённая на 10px) и `absolute` (блок с настроением, зафиксированный относительно страницы).
+**Step 18. CSS positioning**
+Implemented three blocks with different positioning: `static` (the schedule table), `relative` (the menu/content table, shifted by 10px), and `absolute` (the mood block, fixed relative to the page).
 
-**Шаг 19. Единицы измерения**
-Использованы единицы `px`, `%`, `em` в заголовках и изображении блока "My Sizing Example".
+**Step 19. CSS sizing**
+Used `px`, `%`, and `em` units on headings and the image in the "My Sizing Example" block.
 
-![Часть 4 — Единицы измерения (px, %, em)](screenshots/part4_sizing.png)
+![Part 4 — Sizing units (px, %, em)](screenshots/part4_sizing.png)
 
-**Шаг 20. Float и Clear**
-Созданы два блока, один из которых обтекает слева (`float: left`), другой — справа (`float: right`), с последующим `clear: both` для текста ниже.
+**Step 20. Float and Clear**
+Created two boxes, one floated left (`float: left`) and one floated right (`float: right`), followed by `clear: both` for the text below.
 
-![Часть 4 — Float и Clear](screenshots/part4_float.png)
+![Part 4 — Float and Clear](screenshots/part4_float.png)
 
-**Шаг 21. Публикация сайта**
-Проект опубликован через GitHub Pages: **[ссылка на опубликованную страницу — добавить после публикации]**
+**Step 21. Publish your website**
+The project was published via GitHub Pages: **[link to the published page — add after publishing]**
 
-## Общий вид страницы
+## Full Page Overview
 
-![Полный вид страницы](screenshots/full_page.png)
+![Full page view](screenshots/full_page.png)
 
-## Краткое описание процесса работы
+## Summary of Work Process
 
-Разработка велась в VS Code. Сначала была создана базовая HTML-структура страницы с личной информацией, фотографией, списками, ссылками и кнопкой (Part 1). Затем добавлены более сложные HTML-элементы — таблицы, двухколоночная раскладка через таблицу, эмодзи и форма обратной связи (Part 2). После этого к странице было последовательно применено оформление CSS трёх типов — inline, internal и external, — с разбором разницы между селекторами по элементу, классу и id (Part 3). На финальном этапе страница была доработана с помощью favicon, семантического деления на `div`-блоки, настройки блочной модели (border/margin/padding), трёх видов позиционирования (static/relative/absolute), разных единиц измерения размера (px/%/em) и раскладки с обтеканием float/clear (Part 4). В процессе работы были закреплены основы вёрстки веб-страниц и базового стилизования с помощью CSS.
+Development was done in VS Code. First, the basic HTML structure of the page was created with personal information, a photo, lists, links, and a button (Part 1). Next, more advanced HTML elements were added — tables, a two-column table layout, emojis, and a feedback form (Part 2). After that, three types of CSS styling were applied step by step — inline, internal, and external — while learning the difference between element, class, and id selectors (Part 3). In the final stage, the page was enhanced with a favicon, semantic division into `div` blocks, box model tuning (border/margin/padding), three positioning types (static/relative/absolute), different sizing units (px/%/em), and a float/clear layout (Part 4). This assignment reinforced the fundamentals of webpage markup and basic CSS styling.
 
-## Технологии
+## Technologies
 
 - HTML5
 - CSS3
