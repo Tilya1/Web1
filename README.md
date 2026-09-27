@@ -1,121 +1,132 @@
-# Assignment #1 — HTML & CSS Basics
+# Assignment #2. Advanced CSS (Flexbox & Grid)
 
-**Student:** Zhumagaliyev Aktilek
-**Group:** IT-2503
-**University:** AITU (Astana IT University)
-**Course:** Web 1
+**Name:** Zhumagaliyev Aktilek
+**Group:** ____
 
-## Objective
+Topic: a simple website for my web design services.
 
-The goal of this assignment was to learn the basics of HTML and CSS: build a simple webpage using basic and intermediate HTML tags (text, lists, images, links, tables, forms), and apply CSS (inline, internal, external), selectors (element, class, id), the box model, positioning, sizing units, and float/clear.
+Files:
+- `index.html` — main page (Task 0, 1, 3, 4)
+- `portfolio.html` — portfolio page (Task 2)
+- `styles.css` — styles
+- `images/` — images
+- `screenshots/` — screenshots for the report
 
-## Project Structure
+![Full page](screenshots/full-page.png)
 
+---
+
+## Part 1. Flexbox
+
+### Task 0. Navigation Bar
+
+The header is a flex container. `justify-content: space-between` puts the logo on the left and the links on the right. `align-items: center` centers them vertically. The links are also in a flex container with `gap: 30px`.
+
+```css
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
 ```
-├── Untitled-1.html   # main page of the project (HTML markup)
-├── styles.css        # external stylesheet (external CSS)
-├── images/           # images used on the page (photo, favicon)
-└── screenshots/       # screenshots of completed tasks
+
+![Task 0](screenshots/task0-navbar.png)
+
+### Task 1. Card Row
+
+There are four cards with an image, title, text and button. The container `.cards` is a flex container with `gap: 20px`. Each card has `flex: 1`, so all cards have the same width and height. The text has `flex: 1`, so all buttons are at the bottom. On hover the card gets a shadow (the second card on the screenshot).
+
+```css
+.cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 ```
 
-The page links `styles.css` via `<link rel="stylesheet">`, and also contains internal styles (`<style>` in `<head>`) and inline styles (`style="..."` on individual elements), as required by the assignment.
+![Task 1](screenshots/task1-cards.png)
 
-## Part 1. Introduction to HTML
+---
 
-**Step 0. Basic HTML structure**
-Created an HTML file with the basic boilerplate (`<!DOCTYPE html>`, `<html>`, `<head>`, `<title>`, `<body>`); the page title is "My first webpage".
+## Part 2. Grid System
 
-**Step 1. Structuring text**
-Added headings `<h1>`–`<h3>` with name, group, and an "About me" section, plus a short paragraph `<p>` describing myself.
+### Task 2. Page Layout with Grid Areas
 
-**Step 2. Lists**
-Added an ordered list `<ol>` of hobbies and an unordered list `<ul>` of favorite websites.
+On `portfolio.html` the container `.page` is a grid with 2 columns and 3 rows. With `grid-template-areas` the header is on the top, the sidebar is on the left, the main content is on the right and the footer is on the bottom.
 
-**Step 3. Images and links**
-Added a photo via `<img>` and at least two clickable links `<a>` (GitHub, MDN Web Docs, ChatGPT).
+```css
+.page {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}
+```
 
-**Step 4. Button**
-Added a "Click me!" button (no functionality required).
+![Task 2](screenshots/task2-layout.png)
 
-![Part 1 — Heading, photo, about me](screenshots/part1_header.png)
+### Task 3. Image Gallery
 
-![Part 1 — Hobbies](screenshots/part1_hobbies.png)
+The gallery has 9 images. It is a grid with 3 equal columns and 3 rows, and `gap: 15px`. The caption is hidden (`display: none`) and appears on hover (Project 05 on the screenshot).
 
-![Part 1 — Links and button](screenshots/part1_links_button.png)
+```css
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 15px;
+}
 
-## Part 2. Intermediate HTML
+.gallery-item:hover .caption {
+    display: block;
+}
+```
 
-**Step 5. Tables**
-Created a table with three columns — "Subject", "Day", "Time" — filled with a weekly class schedule.
+![Task 3](screenshots/task3-gallery.png)
 
-**Step 6. Table for layout (optional challenge)**
-Implemented a two-column layout using a table: left column — menu, right column — main content.
+---
 
-**Step 7. Emojis**
-Added a paragraph about my mood containing at least 3 emojis (😊, 💪, 🚀).
+## Part 3. Combining Flexbox & Grid
 
-![Part 2 — Tables and positioning](screenshots/part2_tables_positioning.png)
+### Task 4. Portfolio Page
 
-**Step 8. Forms**
-Created a form with Name (text), Email (email), Favorite Color (color) fields and a Submit button.
+The page has a header with Flexbox navigation, main sections, and a footer on the bottom. The portfolio section is a grid: projects on the left (`2fr`) and info on the right (`1fr`). Inside each project card Flexbox puts the title, description and button in a column.
 
-![Part 2 — Form](screenshots/part2_form.png)
+```css
+.portfolio {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
 
-## Part 3. Introduction to CSS
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+```
 
-**Step 9–10. Inline CSS**
-Changed the color of the "About me" paragraph directly with `style="color:blue;"`.
+![Task 4](screenshots/task4-portfolio.png)
 
-**Step 11. Internal CSS**
-Inside `<head>`, used a `<style>` tag to set a rule for `h1` (purple color).
+---
 
-**Step 12. External CSS**
-Created a `styles.css` file, linked with `<link rel="stylesheet" href="styles.css">`. Core style rules (colors for `h2`, `p`, block styling, etc.) were moved into it.
+## Summary
 
-**Step 13. CSS selectors**
-Used element selectors (`p {}`, `h2 {}`), a class selector (`.highlight {}`), and an id selector (`#main-title {}`) with different colors and fonts.
-
-**Step 14. Classes vs. IDs**
-Created a `.highlight` class to style the schedule row for "Web 1", and an `#main-title` id to style the subheading.
-
-*(The result of these styles can be seen in the screenshots above — the purple `h1`, the blue and orange paragraph text, the green `h2`, the highlighted "Web 1" table row, and the blue group-name subheading.)*
-
-## Part 4. Intermediate CSS
-
-**Step 15. Favicon**
-Added a site icon via `<link rel="icon" type="image/png" href="logo-app.png">`.
-
-**Step 16. HTML divs**
-Grouped content into sections using `<div>` (`header`, `main-content`), styled with background colors and padding.
-
-**Step 17. Box model**
-Added `border`, `margin`, and `padding` to several elements with different values to see the spacing effects.
-
-**Step 18. CSS positioning**
-Implemented three blocks with different positioning: `static` (the schedule table), `relative` (the menu/content table, shifted by 10px), and `absolute` (the mood block, fixed relative to the page).
-
-**Step 19. CSS sizing**
-Used `px`, `%`, and `em` units on headings and the image in the "My Sizing Example" block.
-
-![Part 4 — Sizing units (px, %, em)](screenshots/part4_sizing.png)
-
-**Step 20. Float and Clear**
-Created two boxes, one floated left (`float: left`) and one floated right (`float: right`), followed by `clear: both` for the text below.
-
-![Part 4 — Float and Clear](screenshots/part4_float.png)
-
-**Step 21. Publish your website**
-The project was published via GitHub Pages: **[link to the published page — add after publishing]**
-
-## Full Page Overview
-
-![Full page view](screenshots/full_page.png)
-
-## Summary of Work Process
-
-Development was done in VS Code. First, the basic HTML structure of the page was created with personal information, a photo, lists, links, and a button (Part 1). Next, more advanced HTML elements were added — tables, a two-column table layout, emojis, and a feedback form (Part 2). After that, three types of CSS styling were applied step by step — inline, internal, and external — while learning the difference between element, class, and id selectors (Part 3). In the final stage, the page was enhanced with a favicon, semantic division into `div` blocks, box model tuning (border/margin/padding), three positioning types (static/relative/absolute), different sizing units (px/%/em), and a float/clear layout (Part 4). This assignment reinforced the fundamentals of webpage markup and basic CSS styling.
-
-## Technologies
-
-- HTML5
-- CSS3
+First I made the header with Flexbox. Then I made the service cards in one row with Flexbox and added a shadow on hover. After that I made the portfolio page with Grid areas: header, sidebar, main and footer. Then I made a gallery with 9 images using Grid and added a caption on hover. At the end I made the portfolio section where Grid is used for the layout and Flexbox is used inside the project cards. I used only HTML and CSS.
