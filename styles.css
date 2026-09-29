@@ -6,8 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f2f2f2;
+    background-color: #eee;
 }
 
 a {
@@ -21,70 +20,65 @@ img {
 }
 
 section {
-    padding: 50px;
+    padding: 30px;
 }
 
-.title {
+h2 {
     text-align: center;
-    font-size: 32px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #3b82f6;
     color: white;
     text-align: center;
-    border-radius: 5px;
 }
 
-.btn:hover {
-    background-color: #2563eb;
+
+/* Сетка страницы (Grid) */
+.page {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
 }
 
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }
+
+
+/* Шапка (Flex) */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
+    padding: 20px;
     background-color: #222;
     color: white;
-    grid-area: header;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
 }
 
 .nav {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 
-.nav a:hover {
-    color: #3b82f6;
-}
 
-.hero {
-    padding: 100px 20px;
-    text-align: center;
+/* Левая колонка (Flex) */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
     background-color: white;
 }
 
-.hero h1 {
-    font-size: 48px;
-    text-transform: uppercase;
-}
 
-.hero h2 {
-    font-size: 28px;
-    color: #3b82f6;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-}
-
+/* Карточки (Flex) */
 .cards {
     display: flex;
     gap: 20px;
@@ -95,149 +89,56 @@ section {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 15px;
+    padding: 10px;
     background-color: white;
-    border-radius: 8px;
 }
 
 .card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #ddd;
 }
 
 .card img {
     height: 150px;
     object-fit: cover;
-    object-position: top;
 }
 
-.card p {
-    flex: 1;
-}
 
-.portfolio {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-}
-
-.projects {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.project {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-}
-
-.project img {
-    height: 250px;
-    object-fit: cover;
-    object-position: top;
-}
-
-.project p {
-    flex: 1;
-}
-
-.info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    align-self: start;
-}
-
-.info img {
-    height: 250px;
-    object-fit: cover;
-    object-position: top;
-}
-
+/* Галерея (Grid) */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 200px);
-    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px 150px;
+    gap: 10px;
 }
 
-.gallery-item {
+.item {
     position: relative;
 }
 
-.gallery-item img {
+.item img {
     height: 100%;
     object-fit: cover;
-    object-position: top;
 }
 
 .caption {
     display: none;
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 100%;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px;
+    background-color: #222;
     color: white;
 }
 
-.gallery-item:hover .caption {
+.item:hover .caption {
     display: block;
 }
 
+
+/* Подвал */
 .footer {
-    padding: 40px 20px;
+    padding: 20px;
     text-align: center;
     background-color: #222;
     color: white;
-    grid-area: footer;
-}
-
-.contacts {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 20px 0;
-}
-
-.contacts a:hover {
-    color: #3b82f6;
-}
-
-.page {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "header header"
-        "sidebar main"
-        "footer footer";
-    min-height: 100vh;
-}
-
-.sidebar {
-    grid-area: sidebar;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 30px 20px;
-    background-color: white;
-}
-
-.avatar {
-    width: 150px;
-    border-radius: 50%;
-}
-
-.main {
-    grid-area: main;
-    padding: 30px;
 }
