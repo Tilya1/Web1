@@ -1,13 +1,12 @@
 # Assignment #2. Advanced CSS (Flexbox & Grid)
 
 **Name:** Zhumagaliyev Aktilek
-**Group:** ____
+**Group:** TI-2503
 
-Topic: a simple website for my web design services.
+Topic: a simple one-page website for my web design services.
 
 Files:
-- `index.html` — main page (Task 0, 1, 3, 4)
-- `portfolio.html` — portfolio page (Task 2)
+- `index.html` — the page
 - `styles.css` — styles
 - `images/` — images
 - `screenshots/` — screenshots for the report
@@ -20,18 +19,17 @@ Files:
 
 ### Task 0. Navigation Bar
 
-The header is a flex container. `justify-content: space-between` puts the logo on the left and the links on the right. `align-items: center` centers them vertically. The links are also in a flex container with `gap: 30px`.
+The header is a flex container. `justify-content: space-between` puts the name on the left and the menu on the right. The menu links are also in a flex container with `gap: 20px` between them.
 
 ```css
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .nav {
     display: flex;
-    gap: 30px;
+    gap: 20px;
 }
 ```
 
@@ -39,7 +37,7 @@ The header is a flex container. `justify-content: space-between` puts the logo o
 
 ### Task 1. Card Row
 
-There are four cards with an image, title, text and button. The container `.cards` is a flex container with `gap: 20px`. Each card has `flex: 1`, so all cards have the same width and height. The text has `flex: 1`, so all buttons are at the bottom. On hover the card gets a shadow (the second card on the screenshot).
+There are three cards in one row. `.cards` is a flex container with `gap: 20px`. Each card has `flex: 1`, so all cards have the same width. Inside the card, `flex-direction: column` puts the image, title, text and button under each other. On hover the card becomes grey (the second card on the screenshot).
 
 ```css
 .cards {
@@ -51,10 +49,11 @@ There are four cards with an image, title, text and button. The container `.card
     flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #ddd;
 }
 ```
 
@@ -66,35 +65,51 @@ There are four cards with an image, title, text and button. The container `.card
 
 ### Task 2. Page Layout with Grid Areas
 
-On `portfolio.html` the container `.page` is a grid with 2 columns and 3 rows. With `grid-template-areas` the header is on the top, the sidebar is on the left, the main content is on the right and the footer is on the bottom.
+The whole page is inside `.page`, which is a grid with 2 columns and 3 rows. `grid-template-areas` draws the plan of the page. Each part gets its place with `grid-area`:
+
+- the header is on the top (it takes both columns),
+- the sidebar is on the left (200px),
+- the main content is on the right (`1fr` = all free space),
+- the footer is on the bottom (it takes both columns).
 
 ```css
 .page {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 200px 1fr;
     grid-template-rows: auto 1fr auto;
     grid-template-areas:
-        "header header"
+        "header  header"
         "sidebar main"
-        "footer footer";
+        "footer  footer";
 }
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }
 ```
+
+On the screenshot the red lines show that each part is in its grid area.
 
 ![Task 2](screenshots/task2-layout.png)
 
 ### Task 3. Image Gallery
 
-The gallery has 9 images. It is a grid with 3 equal columns and 3 rows, and `gap: 15px`. The caption is hidden (`display: none`) and appears on hover (Project 05 on the screenshot).
+The gallery has 9 images. It is a grid with 3 equal columns, 3 rows of 150px and `gap: 10px`. The caption is hidden with `display: none`. When the mouse is on the image, the caption appears (Fitness on the screenshot).
 
 ```css
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 200px);
-    gap: 15px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 150px 150px 150px;
+    gap: 10px;
 }
 
-.gallery-item:hover .caption {
+.caption {
+    display: none;
+}
+
+.item:hover .caption {
     display: block;
 }
 ```
@@ -107,20 +122,21 @@ The gallery has 9 images. It is a grid with 3 equal columns and 3 rows, and `gap
 
 ### Task 4. Portfolio Page
 
-The page has a header with Flexbox navigation, main sections, and a footer on the bottom. The portfolio section is a grid: projects on the left (`2fr`) and info on the right (`1fr`). Inside each project card Flexbox puts the title, description and button in a column.
+The page uses Grid and Flexbox together:
+
+- **Grid** makes the big layout: header, sidebar, main and footer (`.page`) and the gallery (`.gallery`).
+- **Flexbox** works inside the parts: the menu in the header, the sidebar content in a column, and the cards in a row.
 
 ```css
-.portfolio {
+/* Grid for the layout */
+.page {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
 }
 
-.project {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+/* Flexbox inside */
+.header  { display: flex; }
+.sidebar { display: flex; flex-direction: column; }
+.cards   { display: flex; }
 ```
 
 ![Task 4](screenshots/task4-portfolio.png)
@@ -129,4 +145,4 @@ The page has a header with Flexbox navigation, main sections, and a footer on th
 
 ## Summary
 
-First I made the header with Flexbox. Then I made the service cards in one row with Flexbox and added a shadow on hover. After that I made the portfolio page with Grid areas: header, sidebar, main and footer. Then I made a gallery with 9 images using Grid and added a caption on hover. At the end I made the portfolio section where Grid is used for the layout and Flexbox is used inside the project cards. I used only HTML and CSS.
+First I made the header with Flexbox. Then I made three service cards in one row with Flexbox and added a hover effect. After that I made the layout of the page with Grid areas: header, sidebar, main and footer. Then I made a gallery of 9 images with Grid and a caption that appears on hover. In the end the page uses Grid for the big layout and Flexbox inside the parts. I used only HTML and CSS.
