@@ -1,100 +1,43 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     background-color: #eee;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-img {
-    display: block;
-    width: 100%;
-}
-
 section {
-    padding: 30px;
+    padding: 30px 0;
 }
 
 h2 {
-    text-align: center;
     margin-bottom: 20px;
 }
 
-.btn {
-    padding: 10px;
+/* Task 1: boxes (only CSS) */
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.box {
+    width: calc(33.33% - 7px);
+    padding: 40px;
     background-color: #3b82f6;
     color: white;
     text-align: center;
 }
 
-
-/* Сетка страницы (Grid) */
-.page {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "header  header"
-        "sidebar main"
-        "footer  footer";
-}
-
-.header  { grid-area: header; }
-.sidebar { grid-area: sidebar; }
-.main    { grid-area: main; }
-.footer  { grid-area: footer; }
-
-
-/* Шапка (Flex) */
-.header {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+/* Task 2: columns */
+.column {
+    padding: 40px;
+    margin-bottom: 10px;
     background-color: #222;
     color: white;
+    text-align: center;
 }
 
-.nav {
-    display: flex;
-    gap: 20px;
-}
-
-
-/* Левая колонка (Flex) */
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background-color: white;
-}
-
-
-/* Карточки (Flex) */
-.cards {
-    display: flex;
-    gap: 20px;
-}
-
+/* Task 4: portfolio */
 .card {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    background-color: white;
-}
-
-.card:hover {
-    background-color: #ddd;
+    margin-bottom: 20px;
 }
 
 .card img {
@@ -102,43 +45,59 @@ h2 {
     object-fit: cover;
 }
 
-
-/* Галерея (Grid) */
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 150px 150px 150px;
-    gap: 10px;
+.sidebar {
+    padding: 20px;
+    background-color: white;
+    text-align: center;
 }
 
-.item {
-    position: relative;
+.avatar {
+    width: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
-.item img {
-    height: 100%;
-    object-fit: cover;
-}
-
-.caption {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 5px;
-    background-color: #222;
-    color: white;
-}
-
-.item:hover .caption {
-    display: block;
-}
-
-
-/* Подвал */
-.footer {
+footer {
     padding: 20px;
     text-align: center;
     background-color: #222;
     color: white;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ===== Media Queries ===== */
+
+/* Desktop (default) */
+h1 { font-size: 48px; }
+p  { font-size: 18px; }
+
+/* Tablet */
+@media (max-width: 992px) {
+    h1 { font-size: 36px; }
+    p  { font-size: 16px; }
+
+    .box {
+        width: calc(50% - 5px);
+    }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    h1 { font-size: 26px; }
+    p  { font-size: 14px; }
+
+    section {
+        padding: 15px 0;
+    }
+
+    .box {
+        width: 100%;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
 }

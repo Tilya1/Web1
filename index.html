@@ -3,77 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aktilek</title>
-    <link rel="stylesheet" href="styles.css?v=2">
+    <title>Aktilek - Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
-<div class="page">
+    <!-- Task 3: Bootstrap navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aktilek</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#text">Text</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#boxes">Boxes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-    <header class="header">
-        <b>Aktilek</b>
-        <nav class="nav">
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="container">
 
-    <aside class="sidebar">
-        <img src="images/avatar.jpg" alt="Aktilek">
-        <h3>Aktilek</h3>
-        <p>Web Designer</p>
-        <a href="https://wa.me/77003506311" class="btn">Contact me</a>
-    </aside>
+        <!-- Task 0: Responsive typography -->
+        <section id="text">
+            <h1>Hi, I'm Aktilek</h1>
+            <p>I am a web designer. I make simple websites for small businesses.</p>
+        </section>
 
-    <main class="main">
-
-        <section id="services">
-            <h2>Services</h2>
-            <div class="cards">
-                <div class="card">
-                    <img src="images/iauto.png" alt="Web Design">
-                    <h3>Web Design</h3>
-                    <p>Designs for websites.</p>
-                    <a href="https://wa.me/77003506311" class="btn">Order</a>
-                </div>
-                <div class="card">
-                    <img src="images/flowers.png" alt="Landing">
-                    <h3>Landing Pages</h3>
-                    <p>Pages for businesses.</p>
-                    <a href="https://wa.me/77003506311" class="btn">Order</a>
-                </div>
-                <div class="card">
-                    <img src="images/zhk.png" alt="UI/UX">
-                    <h3>UI/UX Design</h3>
-                    <p>Simple interfaces.</p>
-                    <a href="https://wa.me/77003506311" class="btn">Order</a>
-                </div>
+        <!-- Task 1: Media queries layout (no Bootstrap) -->
+        <section id="boxes">
+            <h2>Media Queries Boxes</h2>
+            <div class="boxes">
+                <div class="box">Box 1</div>
+                <div class="box">Box 2</div>
+                <div class="box">Box 3</div>
             </div>
         </section>
 
+        <!-- Task 2: Bootstrap columns -->
+        <section>
+            <h2>Bootstrap Columns</h2>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4"><div class="column">Column 1</div></div>
+                <div class="col-12 col-md-6 col-lg-4"><div class="column">Column 2</div></div>
+                <div class="col-12 col-md-6 col-lg-4"><div class="column">Column 3</div></div>
+            </div>
+        </section>
+
+        <!-- Task 4: Portfolio -->
         <section id="portfolio">
             <h2>Portfolio</h2>
-            <div class="gallery">
-                <div class="item"><img src="images/iauto.png" alt=""><p class="caption">iauto</p></div>
-                <div class="item"><img src="images/flowers.png" alt=""><p class="caption">Flowers</p></div>
-                <div class="item"><img src="images/remont.png" alt=""><p class="caption">Remont</p></div>
-                <div class="item"><img src="images/zhk.png" alt=""><p class="caption">ЖК</p></div>
-                <div class="item"><img src="images/fitness.png" alt=""><p class="caption">Fitness</p></div>
-                <div class="item"><img src="images/barber.png" alt=""><p class="caption">Barber</p></div>
-                <div class="item"><img src="images/pin1.jpg" alt=""><p class="caption">Design 1</p></div>
-                <div class="item"><img src="images/pin2.jpg" alt=""><p class="caption">Design 2</p></div>
-                <div class="item"><img src="images/pin3.jpg" alt=""><p class="caption">Design 3</p></div>
+            <div class="row">
+
+                <!-- Left: projects -->
+                <div class="col-12 col-lg-8">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <img src="images/iauto.png" class="card-img-top" alt="iauto">
+                                <div class="card-body">
+                                    <h3>iauto</h3>
+                                    <p>Website for car parts.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <img src="images/flowers.png" class="card-img-top" alt="flowers">
+                                <div class="card-body">
+                                    <h3>Flowers</h3>
+                                    <p>Landing page for a flower shop.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <img src="images/zhk.png" class="card-img-top" alt="zhk">
+                                <div class="card-body">
+                                    <h3>ЖК</h3>
+                                    <p>Page for a residential complex.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="card">
+                                <img src="images/fitness.png" class="card-img-top" alt="fitness">
+                                <div class="card-body">
+                                    <h3>Fitness</h3>
+                                    <p>Website for a fitness club.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: sidebar -->
+                <div class="col-12 col-lg-4">
+                    <div class="sidebar">
+                        <img src="images/avatar.jpg" alt="Aktilek" class="avatar">
+                        <h3>Zhumagaliyev Aktilek</h3>
+                        <p>Junior Frontend Developer</p>
+                        <p class="hide-mobile">I like clean and simple design.</p>
+                        <p>Phone: +7 700 350 63 11</p>
+                        <p>Telegram: @t1lya</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-    </main>
+    </div>
 
-    <footer class="footer" id="contact">
-        <p>Phone: +7 700 350 63 11 | Telegram: @t1lya</p>
+    <footer id="contact">
+        <p>© 2026 Zhumagaliyev Aktilek</p>
     </footer>
 
-</div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

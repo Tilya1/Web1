@@ -1,148 +1,171 @@
-# Assignment #2. Advanced CSS (Flexbox & Grid)
+# Assignment #3. Responsive Web Design (Media Queries + Bootstrap Grid)
 
 **Name:** Zhumagaliyev Aktilek
 **Group:** TI-2503
 
-Topic: a simple one-page website for my web design services.
-
 Files:
-- `index.html` — the page
-- `styles.css` — styles
-- `images/` — images
-- `screenshots/` — screenshots for the report
+- `index.html` — the page (all tasks)
+- `styles.css` — my styles and media queries
+- Bootstrap 5.3 is connected from CDN
 
-![Full page](screenshots/full-page.png)
+Breakpoints:
+- Desktop: more than 992px
+- Tablet: 577px – 992px (`@media (max-width: 992px)`)
+- Mobile: 576px and less (`@media (max-width: 576px)`)
 
 ---
 
-## Part 1. Flexbox
+## Part 1. Media Queries
 
-### Task 0. Navigation Bar
+### Task 0. Responsive Typography
 
-The header is a flex container. `justify-content: space-between` puts the name on the left and the menu on the right. The menu links are also in a flex container with `gap: 20px` between them.
+The page has a heading and a paragraph. Media queries change the font size: large on desktop, medium on tablet, small on mobile.
 
 ```css
-.header {
-    display: flex;
-    justify-content: space-between;
+h1 { font-size: 48px; }
+p  { font-size: 18px; }
+
+@media (max-width: 992px) {
+    h1 { font-size: 36px; }
+    p  { font-size: 16px; }
 }
 
-.nav {
-    display: flex;
-    gap: 20px;
+@media (max-width: 576px) {
+    h1 { font-size: 26px; }
+    p  { font-size: 14px; }
 }
 ```
 
-![Task 0](screenshots/task0-navbar.png)
+Desktop:
 
-### Task 1. Card Row
+![Task 0 desktop](screenshots/task0-desktop.png)
 
-There are three cards in one row. `.cards` is a flex container with `gap: 20px`. Each card has `flex: 1`, so all cards have the same width. Inside the card, `flex-direction: column` puts the image, title, text and button under each other. On hover the card becomes grey (the second card on the screenshot).
+Tablet:
+
+![Task 0 tablet](screenshots/task0-tablet.png)
+
+Mobile:
+
+![Task 0 mobile](screenshots/task0-mobile.png)
+
+### Task 1. Responsive Layout with Media Queries
+
+Three boxes, only CSS (no Bootstrap). `.boxes` is flex with `flex-wrap: wrap`. The width of `.box` changes: 1/3 on desktop, 1/2 on tablet, 100% on mobile.
 
 ```css
-.cards {
+.boxes {
     display: flex;
-    gap: 20px;
-}
-
-.card {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
-.card:hover {
-    background-color: #ddd;
+.box { width: calc(33.33% - 7px); }
+
+@media (max-width: 992px) {
+    .box { width: calc(50% - 5px); }
+}
+
+@media (max-width: 576px) {
+    .box { width: 100%; }
 }
 ```
 
-![Task 1](screenshots/task1-cards.png)
+Desktop:
+
+![Task 1 desktop](screenshots/task1-desktop.png)
+
+Tablet:
+
+![Task 1 tablet](screenshots/task1-tablet.png)
+
+Mobile:
+
+![Task 1 mobile](screenshots/task1-mobile.png)
 
 ---
 
-## Part 2. Grid System
+## Part 2. Bootstrap Grid System
 
-### Task 2. Page Layout with Grid Areas
+### Task 2. Bootstrap Responsive Columns
 
-The whole page is inside `.page`, which is a grid with 2 columns and 3 rows. `grid-template-areas` draws the plan of the page. Each part gets its place with `grid-area`:
+Bootstrap has 12 columns. Each column has three classes:
+- `col-12` — mobile: 12 of 12, all columns stacked
+- `col-md-6` — tablet: 6 of 12, two columns in the first row, one in the second
+- `col-lg-4` — desktop: 4 of 12, three equal columns
 
-- the header is on the top (it takes both columns),
-- the sidebar is on the left (200px),
-- the main content is on the right (`1fr` = all free space),
-- the footer is on the bottom (it takes both columns).
-
-```css
-.page {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-        "header  header"
-        "sidebar main"
-        "footer  footer";
-}
-
-.header  { grid-area: header; }
-.sidebar { grid-area: sidebar; }
-.main    { grid-area: main; }
-.footer  { grid-area: footer; }
+```html
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-4">Column 1</div>
+    <div class="col-12 col-md-6 col-lg-4">Column 2</div>
+    <div class="col-12 col-md-6 col-lg-4">Column 3</div>
+</div>
 ```
 
-On the screenshot the red lines show that each part is in its grid area.
+Desktop:
 
-![Task 2](screenshots/task2-layout.png)
+![Task 2 desktop](screenshots/task2-desktop.png)
 
-### Task 3. Image Gallery
+Tablet:
 
-The gallery has 9 images. It is a grid with 3 equal columns, 3 rows of 150px and `gap: 10px`. The caption is hidden with `display: none`. When the mouse is on the image, the caption appears (Fitness on the screenshot).
+![Task 2 tablet](screenshots/task2-tablet.png)
 
-```css
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 150px 150px 150px;
-    gap: 10px;
-}
+Mobile:
 
-.caption {
-    display: none;
-}
+![Task 2 mobile](screenshots/task2-mobile.png)
 
-.item:hover .caption {
-    display: block;
-}
+### Task 3. Bootstrap Navigation Bar
+
+The navbar uses Bootstrap classes. The logo (`navbar-brand`) is on the left, the links are on the right (`ms-auto`). `navbar-expand-md` means: on small screens the links are hidden and a hamburger button (`navbar-toggler`) appears. The menu opens with `data-bs-toggle="collapse"`.
+
+```html
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Aktilek</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto"> ... </ul>
+    </div>
+</nav>
 ```
 
-![Task 3](screenshots/task3-gallery.png)
+Desktop:
+
+![Task 3 desktop](screenshots/task3-desktop.png)
+
+Mobile (hamburger menu opened):
+
+![Task 3 mobile](screenshots/task3-mobile.png)
 
 ---
 
-## Part 3. Combining Flexbox & Grid
+## Part 3. Combined Project
 
-### Task 4. Portfolio Page
+### Task 4. Responsive Portfolio Page
 
-The page uses Grid and Flexbox together:
+1. Header with the Bootstrap navbar.
+2. Main section with two parts: projects on the left (`col-lg-8`, cards in a grid `col-md-6`) and a sidebar with personal info and contacts on the right (`col-lg-4`). On tablet and mobile the sidebar goes under the projects.
+3. Footer across the bottom.
 
-- **Grid** makes the big layout: header, sidebar, main and footer (`.page`) and the gallery (`.gallery`).
-- **Flexbox** works inside the parts: the menu in the header, the sidebar content in a column, and the cards in a row.
+Custom media queries change font sizes, spacing (`section` padding) and visibility (`.hide-mobile` is hidden on mobile).
 
 ```css
-/* Grid for the layout */
-.page {
-    display: grid;
+@media (max-width: 576px) {
+    section { padding: 15px 0; }
+    .hide-mobile { display: none; }
 }
-
-/* Flexbox inside */
-.header  { display: flex; }
-.sidebar { display: flex; flex-direction: column; }
-.cards   { display: flex; }
 ```
 
-![Task 4](screenshots/task4-portfolio.png)
+Desktop:
+
+![Task 4 desktop](screenshots/task4-desktop.png)
+
+Mobile:
+
+![Task 4 mobile](screenshots/task4-mobile.png)
 
 ---
 
 ## Summary
 
-First I made the header with Flexbox. Then I made three service cards in one row with Flexbox and added a hover effect. After that I made the layout of the page with Grid areas: header, sidebar, main and footer. Then I made a gallery of 9 images with Grid and a caption that appears on hover. In the end the page uses Grid for the big layout and Flexbox inside the parts. I used only HTML and CSS.
+First I made a heading and a paragraph and changed their font size with media queries. Then I made three boxes with Flexbox and changed their width with media queries for desktop, tablet and mobile. After that I connected Bootstrap and made three columns with the 12-column grid. Then I made a Bootstrap navbar that turns into a hamburger menu on small screens. In the end I made a portfolio section: projects on the left, a sidebar on the right and a footer, using Bootstrap grid and my own media queries.
