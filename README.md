@@ -1,164 +1,125 @@
-# Assignment #3. Responsive Web Design (Media Queries + Bootstrap Grid)
+# Assignment #4. Forms and Validation
 
 **Name:** Zhumagaliyev Aktilek
-**Group:** TI-2503
+**Group:** IT-2503
 
 Files:
 - `index.html` — the page (all tasks)
-- `styles.css` — my styles and media queries
+- `styles.css` — my styles
 - Bootstrap 5.3 is connected from CDN
 
-Breakpoints:
-- Desktop: more than 992px
-- Tablet: 577px – 992px (`@media (max-width: 992px)`)
-- Mobile: 576px and less (`@media (max-width: 576px)`)
-
 ---
 
-## Part 1. Media Queries
+## Part 1. Basic HTML Forms
 
-### Task 0. Responsive Typography
+### Task 0. Simple Contact Form
 
-The page has a heading and a paragraph. Media queries change the font size: large on desktop, medium on tablet, small on mobile.
-
-```css
-h1 { font-size: 48px; }
-p  { font-size: 18px; }
-
-@media (max-width: 992px) {
-    h1 { font-size: 36px; }
-    p  { font-size: 16px; }
-}
-
-@media (max-width: 576px) {
-    h1 { font-size: 26px; }
-    p  { font-size: 14px; }
-}
-```
-
-Desktop:
-
-![Task 0 desktop](screenshots/task0-desktop.png)
-
-Tablet:
-
-![Task 0 tablet](screenshots/task0-tablet.png)
-
-Mobile:
-
-![Task 0 mobile](screenshots/task0-mobile.png)
-
-### Task 1. Responsive Layout with Media Queries
-
-Three boxes, only CSS (no Bootstrap). `.boxes` is flex with `flex-wrap: wrap`. The width of `.box` changes: 1/3 on desktop, 1/2 on tablet, 100% on mobile.
-
-```css
-.boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.box { width: calc(33.33% - 7px); }
-
-@media (max-width: 992px) {
-    .box { width: calc(50% - 5px); }
-}
-
-@media (max-width: 576px) {
-    .box { width: 100%; }
-}
-```
-
-Desktop:
-
-![Task 1 desktop](screenshots/task1-desktop.png)
-
-Tablet:
-
-![Task 1 tablet](screenshots/task1-tablet.png)
-
-Mobile:
-
-![Task 1 mobile](screenshots/task1-mobile.png)
-
----
-
-## Part 2. Bootstrap Grid System
-
-### Task 2. Bootstrap Responsive Columns
-
-Bootstrap has 12 columns. Each column has three classes:
-- `col-12` — mobile: 12 of 12, all columns stacked
-- `col-md-6` — tablet: 6 of 12, two columns in the first row, one in the second
-- `col-lg-4` — desktop: 4 of 12, three equal columns
+A simple form with Name (`type="text"`), Email (`type="email"`), Message (`<textarea>`) and a Submit button. Every field has a `<label>`. The `for` attribute of the label is the same as the `id` of the input, so a click on the label puts the cursor in the field.
 
 ```html
-<div class="row">
-    <div class="col-12 col-md-6 col-lg-4">Column 1</div>
-    <div class="col-12 col-md-6 col-lg-4">Column 2</div>
-    <div class="col-12 col-md-6 col-lg-4">Column 3</div>
+<label for="name0">Name</label>
+<input type="text" id="name0">
+```
+
+![Task 0](screenshots/task0.png)
+
+### Task 1. Form with HTML5 Validation
+
+I added built-in validation attributes:
+- `required` — the field can not be empty,
+- `type="email"` — the browser checks that the email has `@`,
+- `minlength="2"` and `maxlength="30"` — length of the name,
+- `maxlength="200"` — length of the message.
+
+```html
+<input type="text" id="name1" required minlength="2" maxlength="30">
+<input type="email" id="email1" required>
+<textarea id="message1" required maxlength="200"></textarea>
+```
+
+When I press Send with wrong data, the browser does not send the form and shows a message, for example:
+- Name "A": *Please lengthen this text to 2 characters or more.*
+- Email "aktilek.mail": *Please include an '@' in the email address.*
+- Empty message: *Please fill out this field.*
+
+![Task 1](screenshots/task1.png)
+
+---
+
+## Part 2. Bootstrap Forms
+
+### Task 2. Bootstrap Form Styling
+
+The same form with Bootstrap classes:
+- `form-label` for labels, `form-control` for inputs,
+- `row` and `col-12 col-md-6` — Name and Email are in one row on a computer and one under another on a phone,
+- `placeholder` — grey hint inside the field,
+- `form-text` — helper text under the email field.
+
+```html
+<div class="col-12 col-md-6 mb-3">
+    <label for="email2" class="form-label">Email</label>
+    <input type="email" class="form-control" id="email2" placeholder="name@example.com">
+    <div class="form-text">We will never share your email.</div>
 </div>
 ```
 
-Desktop:
+![Task 2](screenshots/task2.png)
 
-![Task 2 desktop](screenshots/task2-desktop.png)
+### Task 3. Bootstrap Validation Styles
 
-Tablet:
-
-![Task 2 tablet](screenshots/task2-tablet.png)
-
-Mobile:
-
-![Task 2 mobile](screenshots/task2-mobile.png)
-
-### Task 3. Bootstrap Navigation Bar
-
-The navbar uses Bootstrap classes. The logo (`navbar-brand`) is on the left, the links are on the right (`ms-auto`). `navbar-expand-md` means: on small screens the links are hidden and a hamburger button (`navbar-toggler`) appears. The menu opens with `data-bs-toggle="collapse"`.
+`is-valid` makes the field green, `is-invalid` makes it red. The message is in `valid-feedback` or `invalid-feedback` under the input. Bootstrap shows it only when the input has the right class.
 
 ```html
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Aktilek</a>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto"> ... </ul>
-    </div>
-</nav>
+<input type="text" class="form-control is-valid" value="Aktilek">
+<div class="valid-feedback">Looks good!</div>
+
+<input type="email" class="form-control is-invalid">
+<div class="invalid-feedback">Email is required.</div>
 ```
 
-Desktop:
-
-![Task 3 desktop](screenshots/task3-desktop.png)
-
-Mobile (hamburger menu opened):
-
-![Task 3 mobile](screenshots/task3-mobile.png)
+![Task 3](screenshots/task3.png)
 
 ---
 
-## Part 3. Combined Project
+## Part 3. Advanced Form Project
 
-### Task 4. Responsive Portfolio Page
+### Task 4. Registration Form
 
-1. Header with the Bootstrap navbar.
-2. Main section with two parts: projects on the left (`col-lg-8`, cards in a grid `col-md-6`) and a sidebar with personal info and contacts on the right (`col-lg-4`). On tablet and mobile the sidebar goes under the projects.
-3. Footer across the bottom.
+The form has First Name, Last Name, Email, Password, Confirm Password, Gender (radio), Hobbies (checkboxes), Country (select), Submit and Reset buttons.
 
-Custom media queries change font sizes, spacing (`section` padding) and visibility (`.hide-mobile` is hidden on mobile).
+- **Responsive:** Bootstrap grid `col-12 col-md-6` — two fields in a row on a computer, one on a phone.
+- **HTML5 validation:** `required` on fields, `type="email"`, password `minlength="6"`.
+- **Bootstrap validation:** the form has `class="needs-validation"` and `novalidate` (the browser does not show its own messages). After pressing Submit, a small script adds the class `was-validated` to the form. Then Bootstrap shows wrong fields in red with `invalid-feedback` and correct fields in green with `valid-feedback`.
 
-```css
-@media (max-width: 576px) {
-    section { padding: 15px 0; }
-    .hide-mobile { display: none; }
-}
+```html
+<form class="needs-validation" novalidate>
+    <input type="password" class="form-control" id="password" minlength="6" required>
+    <div class="invalid-feedback">Password must have at least 6 characters.</div>
+    ...
+</form>
 ```
 
-Desktop:
+```js
+const form = document.querySelector('.needs-validation');
 
-![Task 4 desktop](screenshots/task4-desktop.png)
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    form.classList.add('was-validated');
+});
+
+form.addEventListener('reset', function () {
+    form.classList.remove('was-validated');
+});
+```
+
+Empty form after pressing Submit:
+
+![Task 4 invalid](screenshots/task4-invalid.png)
+
+Correct data:
+
+![Task 4 valid](screenshots/task4-valid.png)
 
 Mobile:
 
@@ -168,4 +129,4 @@ Mobile:
 
 ## Summary
 
-First I made a heading and a paragraph and changed their font size with media queries. Then I made three boxes with Flexbox and changed their width with media queries for desktop, tablet and mobile. After that I connected Bootstrap and made three columns with the 12-column grid. Then I made a Bootstrap navbar that turns into a hamburger menu on small screens. In the end I made a portfolio section: projects on the left, a sidebar on the right and a footer, using Bootstrap grid and my own media queries.
+First I made a simple contact form with labels. Then I added HTML5 validation attributes and checked how the browser stops the form with wrong data. After that I made the same form with Bootstrap classes and grid, added placeholders and helper text. Then I showed Bootstrap validation styles with `is-valid` and `is-invalid`. In the end I made a responsive registration form with HTML5 validation and Bootstrap validation feedback.
