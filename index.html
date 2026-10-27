@@ -3,195 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 4 - Forms</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css?v=4">
+    <title>Assignment 5 - JavaScript</title>
+    <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
 
-    <div class="container">
+    <h1>Assignment 5. JavaScript Basics</h1>
 
-        <h1>Assignment 4. Forms and Validation</h1>
+    <section id="part1">
+        <h2>Part 1. Profile Object</h2>
+        <p>Name: <span id="showName"></span></p>
+        <p>Birth year: <span id="showYear"></span></p>
+        <p>Developer: <span id="showDev"></span></p>
+        <p>Hobbies: <span id="showHobbies"></span></p>
+        <p>Age: <span id="showAge"></span></p>
+        <p>Months old: <span id="showMonths"></span></p>
+        <p>Hobbies count: <span id="showCount"></span></p>
+    </section>
 
-        <!-- Task 0 -->
-        <section id="task0">
-            <h2>Task 0. Simple Contact Form</h2>
-            <form action="#">
-                <label for="name0">Name</label>
-                <input type="text" id="name0">
+    <section id="part2">
+        <h2>Part 2. Form</h2>
+        <form id="profileForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
 
-                <label for="email0">Email</label>
-                <input type="email" id="email0">
+            <label for="birthYear">Birth Year</label>
+            <input type="number" id="birthYear" min="1900" max="2026" required>
 
-                <label for="message0">Message</label>
-                <textarea id="message0"></textarea>
+            <button type="submit">Create / Update Profile</button>
+        </form>
+    </section>
 
-                <button type="submit">Send</button>
-            </form>
-        </section>
+    <section id="part3">
+        <h2>Part 3. Hobbies List</h2>
+        <ul id="hobbyList">
+            <li>Football</li>
+            <li>Games</li>
+            <li>Music</li>
+        </ul>
 
-        <!-- Task 1 -->
-        <section id="task1">
-            <h2>Task 1. HTML5 Validation</h2>
-            <form action="#">
-                <label for="name1">Name</label>
-                <input type="text" id="name1" required minlength="2" maxlength="30">
+        <input type="text" id="newItem" placeholder="New hobby">
+        <button id="addBtn">Add Item</button>
+        <button id="removeBtn">Remove Item</button>
+    </section>
 
-                <label for="email1">Email</label>
-                <input type="email" id="email1" required>
-
-                <label for="message1">Message</label>
-                <textarea id="message1" required maxlength="200"></textarea>
-
-                <button type="submit">Send</button>
-            </form>
-        </section>
-
-        <!-- Task 2 -->
-        <section id="task2">
-            <h2>Task 2. Bootstrap Form</h2>
-            <form action="#">
-                <div class="row">
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="name2" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name2" placeholder="Your name">
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="email2" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email2" placeholder="name@example.com">
-                        <div class="form-text">We will never share your email.</div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="message2" class="form-label">Message</label>
-                    <textarea class="form-control" id="message2" rows="3" placeholder="Write your message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </section>
-
-        <!-- Task 3 -->
-        <section id="task3">
-            <h2>Task 3. Bootstrap Validation Styles</h2>
-            <form action="#">
-                <div class="row">
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="name3" class="form-label">Name</label>
-                        <input type="text" class="form-control is-valid" id="name3" value="Aktilek">
-                        <div class="valid-feedback">Looks good!</div>
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="email3" class="form-label">Email</label>
-                        <input type="email" class="form-control is-invalid" id="email3">
-                        <div class="invalid-feedback">Email is required.</div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </section>
-
-        <!-- Task 4 -->
-        <section id="task4">
-            <h2>Task 4. Registration Form</h2>
-            <form class="needs-validation" novalidate>
-                <div class="row">
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" required>
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">First name is required.</div>
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" required>
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">Last name is required.</div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email4" placeholder="name@example.com" required>
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Enter a correct email.</div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" minlength="6" required>
-                        <div class="form-text">Minimum 6 characters.</div>
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">Password must have at least 6 characters.</div>
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                        <label for="password2" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="password2" minlength="6" required>
-                        <div class="valid-feedback">Looks good!</div>
-                        <div class="invalid-feedback">Please confirm your password.</div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <p class="mb-1">Gender</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="male" required>
-                        <label class="form-check-label" for="male">Male</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gender" id="female" required>
-                        <label class="form-check-label" for="female">Female</label>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <p class="mb-1">Hobbies</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="sport">
-                        <label class="form-check-label" for="sport">Sport</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="music">
-                        <label class="form-check-label" for="music">Music</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="games">
-                        <label class="form-check-label" for="games">Games</label>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <select class="form-select" id="country" required>
-                        <option value="">Choose...</option>
-                        <option>Kazakhstan</option>
-                        <option>Russia</option>
-                        <option>Uzbekistan</option>
-                        <option>Kyrgyzstan</option>
-                    </select>
-                    <div class="valid-feedback">Looks good!</div>
-                    <div class="invalid-feedback">Please choose a country.</div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-            </form>
-        </section>
-
-    </div>
-
-    <script>
-        const form = document.querySelector('.needs-validation');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            form.classList.add('was-validated');
-        });
-
-        form.addEventListener('reset', function () {
-            form.classList.remove('was-validated');
-        });
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

@@ -1,132 +1,111 @@
-# Assignment #4. Forms and Validation
+# Assignment #5. JavaScript Basics (DOM Manipulation & Events)
 
 **Name:** Zhumagaliyev Aktilek
 **Group:** IT-2503
 
 Files:
-- `index.html` — the page (all tasks)
-- `styles.css` — my styles
-- Bootstrap 5.3 is connected from CDN
+- `index.html` — the page
+- `styles.css` — styles
+- `script.js` — JavaScript code
 
 ---
 
-## Part 1. Basic HTML Forms
+## Part 1. Profile Object, Data Types & Arithmetic
 
-### Task 0. Simple Contact Form
+### Task 1. The Personal Info Object
 
-A simple form with Name (`type="text"`), Email (`type="email"`), Message (`<textarea>`) and a Submit button. Every field has a `<label>`. The `for` attribute of the label is the same as the `id` of the input, so a click on the label puts the cursor in the field.
+I made a `const` object `userProfile` with different data types: string, number, boolean and array.
 
-```html
-<label for="name0">Name</label>
-<input type="text" id="name0">
+```js
+const userProfile = {
+    name: "Aktilek",
+    birthYear: 2007,
+    isDeveloper: true,
+    hobbies: ["Football", "Games", "Music"]
+};
 ```
 
-![Task 0](screenshots/task0.png)
+### Task 2. Arithmetic Calculations
 
-### Task 1. Form with HTML5 Validation
+The age is calculated from the current year minus the birth year. Then I calculate months (age * 12) and the number of hobbies (`length` of the array). The values are shown on the page and in the console.
 
-I added built-in validation attributes:
-- `required` — the field can not be empty,
-- `type="email"` — the browser checks that the email has `@`,
-- `minlength="2"` and `maxlength="30"` — length of the name,
-- `maxlength="200"` — length of the message.
-
-```html
-<input type="text" id="name1" required minlength="2" maxlength="30">
-<input type="email" id="email1" required>
-<textarea id="message1" required maxlength="200"></textarea>
+```js
+const currentYear = new Date().getFullYear();
+const age = currentYear - userProfile.birthYear;
+const months = age * 12;
+const hobbiesCount = userProfile.hobbies.length;
 ```
 
-When I press Send with wrong data, the browser does not send the form and shows a message, for example:
-- Name "A": *Please lengthen this text to 2 characters or more.*
-- Email "aktilek.mail": *Please include an '@' in the email address.*
-- Empty message: *Please fill out this field.*
-
-![Task 1](screenshots/task1.png)
+![Task 1 and 2](screenshots/task1-2.png)
 
 ---
 
-## Part 2. Bootstrap Forms
+## Part 2. Form Input & Event Responses
 
-### Task 2. Bootstrap Form Styling
+### Task 3. HTML Form Setup
 
-The same form with Bootstrap classes:
-- `form-label` for labels, `form-control` for inputs,
-- `row` and `col-12 col-md-6` — Name and Email are in one row on a computer and one under another on a phone,
-- `placeholder` — grey hint inside the field,
-- `form-text` — helper text under the email field.
+A form with Username, Birth Year and the "Create / Update Profile" button.
 
 ```html
-<div class="col-12 col-md-6 mb-3">
-    <label for="email2" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email2" placeholder="name@example.com">
-    <div class="form-text">We will never share your email.</div>
-</div>
-```
+<form id="profileForm">
+    <label for="username">Username</label>
+    <input type="text" id="username" required>
 
-![Task 2](screenshots/task2.png)
+    <label for="birthYear">Birth Year</label>
+    <input type="number" id="birthYear" min="1900" max="2026" required>
 
-### Task 3. Bootstrap Validation Styles
-
-`is-valid` makes the field green, `is-invalid` makes it red. The message is in `valid-feedback` or `invalid-feedback` under the input. Bootstrap shows it only when the input has the right class.
-
-```html
-<input type="text" class="form-control is-valid" value="Aktilek">
-<div class="valid-feedback">Looks good!</div>
-
-<input type="email" class="form-control is-invalid">
-<div class="invalid-feedback">Email is required.</div>
+    <button type="submit">Create / Update Profile</button>
+</form>
 ```
 
 ![Task 3](screenshots/task3.png)
 
+### Task 4. Event Listener
+
+I added a `submit` event listener to the form. `preventDefault()` stops the page from reloading. The script takes the values from the inputs, updates `userProfile` and shows the new data. The background of Part 1 becomes green after the update.
+
+```js
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    userProfile.name = document.getElementById("username").value;
+    userProfile.birthYear = Number(document.getElementById("birthYear").value);
+
+    showProfile();
+    document.getElementById("part1").style.backgroundColor = "#e6ffe6";
+});
+```
+
+![Task 4](screenshots/task4.png)
+
 ---
 
-## Part 3. Advanced Form Project
+## Part 3. DOM List Manipulation
 
-### Task 4. Registration Form
+### Task 5. Creating & Removing Elements
 
-The form has First Name, Last Name, Email, Password, Confirm Password, Gender (radio), Hobbies (checkboxes), Country (select), Submit and Reset buttons.
+There is a `<ul>` with my hobbies. "Add Item" creates a new `<li>` with `createElement` and adds it with `appendChild`. "Remove Item" deletes the last `<li>` with `lastElementChild.remove()`. The hobbies array and the hobbies count are updated too.
 
-- **Responsive:** Bootstrap grid `col-12 col-md-6` — two fields in a row on a computer, one on a phone.
-- **HTML5 validation:** `required` on fields, `type="email"`, password `minlength="6"`.
-- **Bootstrap validation:** the form has `class="needs-validation"` and `novalidate` (the browser does not show its own messages). After pressing Submit, a small script adds the class `was-validated` to the form. Then Bootstrap shows wrong fields in red with `invalid-feedback` and correct fields in green with `valid-feedback`.
-
-```html
-<form class="needs-validation" novalidate>
-    <input type="password" class="form-control" id="password" minlength="6" required>
-    <div class="invalid-feedback">Password must have at least 6 characters.</div>
-    ...
-</form>
+```js
+const li = document.createElement("li");
+li.textContent = newItem.value;
+list.appendChild(li);
 ```
 
 ```js
-const form = document.querySelector('.needs-validation');
-
-form.addEventListener('submit', function (event) {
-    event.preventDefault();
-    form.classList.add('was-validated');
-});
-
-form.addEventListener('reset', function () {
-    form.classList.remove('was-validated');
-});
+list.lastElementChild.remove();
 ```
 
-Empty form after pressing Submit:
+Added "Reading":
 
-![Task 4 invalid](screenshots/task4-invalid.png)
+![Task 5 add](screenshots/task5-add.png)
 
-Correct data:
+Removed two items:
 
-![Task 4 valid](screenshots/task4-valid.png)
-
-Mobile:
-
-![Task 4 mobile](screenshots/task4-mobile.png)
+![Task 5 remove](screenshots/task5-remove.png)
 
 ---
 
 ## Summary
 
-First I made a simple contact form with labels. Then I added HTML5 validation attributes and checked how the browser stops the form with wrong data. After that I made the same form with Bootstrap classes and grid, added placeholders and helper text. Then I showed Bootstrap validation styles with `is-valid` and `is-invalid`. In the end I made a responsive registration form with HTML5 validation and Bootstrap validation feedback.
+First I made the `userProfile` object with different data types. Then I calculated the age, months and hobbies count with arithmetic operators and showed them on the page and in the console. After that I made a form and added a submit event listener that updates the object with the user input. In the end I made a hobbies list where the user can add a new item and remove the last item.
