@@ -104,7 +104,7 @@ $(".panel-title").click(function () {
 });
 ```
 
-Music and Subject panels are open:
+Music and Movie panels are open:
 
 ![Task 4](screenshots/task4-slide.png)
 
