@@ -3,50 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 5 - JavaScript</title>
-    <link rel="stylesheet" href="styles.css?v=5">
+    <title>Assignment 6 - jQuery</title>
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
-    <h1>Assignment 5. JavaScript Basics</h1>
+    <section id="profile">
+        <h1>Aktilek Zhumagaliyev</h1>
+        <h2 id="welcome">Welcome to My Portfolio</h2>
+        <p id="headline">Computer Science student at AITU</p>
+        <p class="intro">Hi! I am a 2nd year student. I study web technologies and I want to become a frontend developer.</p>
 
-    <section id="part1">
-        <h2>Part 1. Profile Object</h2>
-        <p>Name: <span id="showName"></span></p>
-        <p>Birth year: <span id="showYear"></span></p>
-        <p>Developer: <span id="showDev"></span></p>
-        <p>Hobbies: <span id="showHobbies"></span></p>
-        <p>Age: <span id="showAge"></span></p>
-        <p>Months old: <span id="showMonths"></span></p>
-        <p>Hobbies count: <span id="showCount"></span></p>
+        <button id="greetBtn">Change Greeting</button>
+        <button id="lightBtn">Light Theme</button>
+        <button id="darkBtn">Dark Theme</button>
     </section>
 
-    <section id="part2">
-        <h2>Part 2. Form</h2>
-        <form id="profileForm">
-            <label for="username">Username</label>
-            <input type="text" id="username" required>
-
-            <label for="birthYear">Birth Year</label>
-            <input type="number" id="birthYear" min="1900" max="2026" required>
-
-            <button type="submit">Create / Update Profile</button>
-        </form>
-    </section>
-
-    <section id="part3">
-        <h2>Part 3. Hobbies List</h2>
-        <ul id="hobbyList">
-            <li>Football</li>
-            <li>Games</li>
-            <li>Music</li>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am from Semey and now I live in Astana. I like programming, football and video games.</p>
+        <p id="status">Currently learning jQuery!</p>
+        <ul id="facts">
+            <li>I am from Semey.</li>
+            <li>I like playing football with friends.</li>
+            <li>My goal is to become a frontend developer.</li>
         </ul>
 
-        <input type="text" id="newItem" placeholder="New hobby">
-        <button id="addBtn">Add Item</button>
-        <button id="removeBtn">Remove Item</button>
+        <button id="hideBtn">Hide</button>
+        <button id="showBtn">Show</button>
+        <button id="toggleBtn">Toggle</button>
     </section>
 
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="images">
+            <img src="images/profile.jpg" alt="Profile picture">
+            <img src="images/photo.jpg" alt="My photo">
+        </div>
+
+        <button id="fadeInBtn">Fade In</button>
+        <button id="fadeOutBtn">Fade Out</button>
+        <button id="fadeToggleBtn">Fade Toggle</button>
+    </section>
+
+    <section id="favorites">
+        <h2>My Favorites</h2>
+
+        <h3 class="panel-title">My Favorite Music</h3>
+        <div class="panel">I like rap and pop music. I listen to music when I study.</div>
+
+        <h3 class="panel-title">My Favorite Movie</h3>
+        <div class="panel">My favorite movie is Interstellar.</div>
+
+        <h3 class="panel-title">My Favorite Subject</h3>
+        <div class="panel">My favorite subject is Web Technologies.</div>
+
+        <button id="openAllBtn">Open All</button>
+        <button id="closeAllBtn">Close All</button>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul id="skillList">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Java</li>
+        </ul>
+
+        <input type="text" id="skillInput" placeholder="New skill">
+        <button id="addBtn">Add Skill</button>
+        <button id="prependBtn">Prepend Skill</button>
+        <button id="removeBtn">Remove Skill</button>
+        <p id="skillMsg"></p>
+    </section>
+
+    <section id="social">
+        <h2>Social Link</h2>
+        <a id="socialLink" href="https://github.com/Tilya1" target="_blank">My GitHub</a>
+        <br>
+        <button id="linkBtn">Change Link</button>
+    </section>
+
+    <section id="contact">
+        <h2>Form</h2>
+        <form>
+            <label for="nameInput">Name</label>
+            <input type="text" id="nameInput">
+
+            <label for="emailInput">Email</label>
+            <input type="email" id="emailInput">
+        </form>
+        <p>Name: <span id="showName"></span></p>
+        <p>Email: <span id="showEmail"></span></p>
+    </section>
+
+    <section id="bars">
+        <h2>Skill Bars</h2>
+
+        <p>HTML</p>
+        <div class="bar-box"><div class="bar" id="barHtml"></div></div>
+
+        <p>CSS</p>
+        <div class="bar-box"><div class="bar" id="barCss"></div></div>
+
+        <p>JavaScript</p>
+        <div class="bar-box"><div class="bar" id="barJs"></div></div>
+
+        <button id="animateBtn">Animate My Skills</button>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="script.js"></script>
 
 </body>
